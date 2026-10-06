@@ -1,0 +1,23 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        '''
+        #brute force(using sort methid)
+        res = defaultdict(list)
+        for s in strs:
+            sorteds = ''.join(sorted(s))
+            res[sorteds].append(s)
+        return list(res.values())
+        '''
+        '''possible edgecases
+        res = defaultdict(list)
+        for s in strs:
+            count =[0]*26
+            for c in s:
+                count[ord(c)-ord('a')]+=1
+            res[tuple(count)].append(s)
+        return list(res.values())
+        '''
+        res = defaultdict(list)
+        for s in strs:
+            res[tuple(sorted(s))].append(s)
+        return list(res.values())
